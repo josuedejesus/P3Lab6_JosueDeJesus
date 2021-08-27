@@ -9,6 +9,9 @@ int menu();
 Integer *ingresarInteger();
 void leer(vector<Integer*> lista);
 void sumar(vector<Integer*> lista);
+void restar(vector<Integer*> lista);
+void multiplicar(vector<Integer*> lista);
+void dividir(vector<Integer*> lista);
 int operacionesInt();
 
 int main(int argc, char** argv) {
@@ -21,9 +24,36 @@ int main(int argc, char** argv) {
 				break;
 				
 			case 4:
-				operacionesInt();
-			    leer(listaInt);
-			    sumar(listaInt);
+				int opcion2 = 0;
+				do {
+					switch(opcion2)
+					{
+						case 1:
+							cout << "SUMAR" << endl;
+							leer(listaInt);
+			                sumar(listaInt);
+			                cout << "----------------" << endl;
+			                break;
+			            
+			            case 2:
+			            	cout << "RESTAR" << endl;
+			            	leer(listaInt);
+			            	restar(listaInt);
+			            	break;
+			            	
+			            case 3:
+			            	cout << "MULTIPLICAR" << endl;
+			            	leer(listaInt);
+			            	multiplicar(listaInt);
+			            	break;
+			            	
+			            case 4:
+			            	cout << "DIVIDIR" << endl;
+			            	leer(listaInt);
+			            	dividir(listaInt);
+			            	break;
+					}
+				}while ((opcion2 = operacionesInt()) != 5);		    
 				break;	
 		}
 	}
@@ -42,6 +72,7 @@ int menu()
 	<< "7. Salir" << endl;
 	cout << "Ingrese su opcion: ";
 	cin >>  opcionMenu;
+	system("cls");
 	return opcionMenu;
 }
 
@@ -62,12 +93,12 @@ Integer *ingresarInteger()
 int operacionesInt()
 {
 	int opcionOperacion = 0;
-	system("cls");
 	cout << "OPERACIONES INTEGER" << endl;
 	cout << "1. Sumar\n"
 	<< "2. Restar\n"
 	<< "3. Multiplicar\n"
-	<< "4. Dividir" << endl;
+	<< "4. Dividir\n"
+	<< "5. Salir" << endl;
 	cout << "Ingrese su opcion: ";
 	cin >> opcionOperacion;
 	return opcionOperacion;
@@ -101,6 +132,80 @@ void sumar(vector<Integer*> lista)
     		val2 = lista[i]->getValor();
 		}
 	}
-	
 	cout <<  val1 << " + " << val2 << " = " <<val1 + val2 << endl;
+}
+
+void restar(vector<Integer*> lista)
+{
+	string var1, var2;
+	int val1, val2;
+	int suma = 0;
+	cout << "Ingrese nombre de variable 1: ";
+	cin >> var1;
+	cout << "Ingrese nombre de variable 2: ";
+	cin >> var2;
+	for(int i = 0; i < lista.size(); i++)
+    {
+    	if(lista[i]->getVariable() == var1)
+    	{
+    		val1 = lista[i]->getValor();
+		}
+		
+		if(lista[i]->getVariable() == var2)
+    	{
+    		val2 = lista[i]->getValor();
+		}
+	}
+	
+	cout <<  val1 << " - " << val2 << " = " <<val1 - val2 << endl;
+}
+
+void multiplicar(vector<Integer*> lista)
+{
+	string var1, var2;
+	int val1, val2;
+	int suma = 0;
+	cout << "Ingrese nombre de variable 1: ";
+	cin >> var1;
+	cout << "Ingrese nombre de variable 2: ";
+	cin >> var2;
+	for(int i = 0; i < lista.size(); i++)
+    {
+    	if(lista[i]->getVariable() == var1)
+    	{
+    		val1 = lista[i]->getValor();
+		}
+		
+		if(lista[i]->getVariable() == var2)
+    	{
+    		val2 = lista[i]->getValor();
+		}
+	}
+	
+	cout <<  val1 << " x " << val2 << " = " <<val1 * val2 << endl;
+}
+
+void dividir(vector<Integer*> lista)
+{
+	string var1, var2;
+	int val1, val2;
+	int suma = 0;
+	cout << "Ingrese nombre de variable 1: ";
+	cin >> var1;
+	cout << "Ingrese nombre de variable 2: ";
+	cin >> var2;
+	for(int i = 0; i < lista.size(); i++)
+    {
+    	if(lista[i]->getVariable() == var1)
+    	{
+    		val1 = lista[i]->getValor();
+		}
+		
+		if(lista[i]->getVariable() == var2)
+    	{
+    		val2 = lista[i]->getValor();
+		}
+	}
+	
+	cout <<  val1 << " / " << val2 << " = " <<val1 / val2 << endl;
 }

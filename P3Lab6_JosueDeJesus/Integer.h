@@ -12,7 +12,7 @@ class Integer
 	public:
 		Integer();
 		Integer(string, int);
-		
+				
 		void setVariable(string);
 		string getVariable();
 		
